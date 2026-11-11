@@ -1,0 +1,212 @@
+.explorer {
+  position: relative;
+  padding-block: var(--section-y);
+  overflow: hidden;
+  background: linear-gradient(180deg, transparent, rgba(236, 227, 211, 0.55) 18%, rgba(236, 227, 211, 0.55) 82%, transparent);
+}
+
+.explorer__plum {
+  position: absolute;
+  right: -8%;
+  top: 2%;
+  width: min(30vw, 380px);
+  opacity: 0.4;
+  scale: -1 1;
+  pointer-events: none;
+}
+
+.explorer .container {
+  position: relative;
+}
+
+.explorer__head {
+  max-width: 640px;
+}
+
+.explorer__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 44px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+.explorer__tab {
+  padding: 10px 22px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.explorer__tab:hover {
+  border-color: var(--ink);
+}
+
+.explorer__tab.is-active {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper-light);
+}
+
+.explorer__panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  gap: clamp(28px, 6vw, 88px);
+  align-items: center;
+  margin-top: 48px;
+}
+
+.explorer__art {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 380px;
+  aspect-ratio: 5 / 4;
+}
+
+.explorer__glow {
+  position: absolute;
+  inset: 6%;
+  border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--accent) 34%, transparent), transparent 68%);
+  transition: background 0.6s ease;
+}
+
+.explorer__mist {
+  position: absolute;
+  left: -6%;
+  bottom: 4%;
+  width: 55%;
+  opacity: 0.5;
+}
+
+.explorer__landmark {
+  position: relative;
+  width: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  animation: landmark-in 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.explorer__info {
+  animation: info-in 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.explorer__place {
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.explorer__city {
+  margin-top: 8px;
+  font-size: clamp(2.6rem, 6vw, 4.6rem);
+}
+
+.explorer__intro {
+  margin-top: 16px;
+  max-width: 52ch;
+  color: var(--ink-soft);
+}
+
+.explorer__dishes {
+  list-style: none;
+  margin: 30px 0 0;
+  padding: 0;
+  border-top: 1px solid var(--line);
+}
+
+.explorer__dishes li {
+  padding: 18px 0 18px 22px;
+  border-bottom: 1px solid var(--line);
+  position: relative;
+}
+
+.explorer__dishes li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 30px;
+  width: 8px;
+  height: 8px;
+  transform: rotate(45deg);
+  background: var(--accent);
+}
+
+.explorer__dishes h4 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.55rem;
+  font-weight: 700;
+}
+
+.explorer__dishes p {
+  margin-top: 4px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+
+@keyframes landmark-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.97);
+  }
+}
+
+@keyframes info-in {
+  from {
+    opacity: 0;
+    transform: translateX(18px);
+  }
+}
+
+@media (max-width: 900px) {
+  .explorer__panel {
+    grid-template-columns: 1fr;
+  }
+
+  .explorer__art {
+    min-height: 0;
+    aspect-ratio: auto;
+    height: 300px;
+  }
+
+  .explorer__landmark {
+    max-height: 300px;
+  }
+}
+
+@media (max-width: 600px) {
+  .explorer__tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    margin-inline: calc(var(--gutter) * -1);
+    padding-inline: var(--gutter);
+    scrollbar-width: none;
+  }
+
+  .explorer__tab {
+    flex: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .explorer__landmark,
+  .explorer__info {
+    animation: none;
+  }
+}

@@ -1,0 +1,112 @@
+.hero {
+  --sky-w: max(900px, min(100vw, 120svh));
+  --sky-h: calc(var(--sky-w) * 0.5735);
+  position: relative;
+  height: max(100svh, calc(var(--sky-h) + 260px));
+  min-height: 620px;
+  overflow: hidden;
+}
+
+.skyline {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  margin-left: calc(var(--sky-w) / -2);
+  width: var(--sky-w);
+  aspect-ratio: 2000 / 1147;
+}
+
+.layer--flip {
+  scale: -1 1;
+}
+
+.layer {
+  position: absolute;
+  display: block;
+  height: auto;
+  max-width: none;
+  mix-blend-mode: multiply;
+  user-select: none;
+  pointer-events: none;
+  translate: 0 calc(var(--py, 0) * var(--speed, 0) * 1px);
+  animation: rise 1.5s cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+  animation-delay: var(--d, 0s);
+}
+
+.layer--deco {
+  animation-name: fade;
+  animation-duration: 2s;
+}
+
+.layer--map {
+  mix-blend-mode: normal;
+  filter: drop-shadow(0 6px 10px rgba(110, 70, 20, 0.25));
+}
+
+.hero__logo {
+  position: absolute;
+  margin: 0;
+  line-height: 0;
+}
+
+.layer-in {
+  display: block;
+  width: 100%;
+  height: auto;
+  mix-blend-mode: multiply;
+  user-select: none;
+  animation: logo-in 1.6s cubic-bezier(0.2, 0.7, 0.2, 1) 0.8s backwards;
+}
+
+.hero__est {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 89.5%;
+  margin: 0;
+  text-align: center;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: max(12px, calc(var(--sky-w) * 0.019));
+  letter-spacing: 0.5em;
+  text-indent: 0.5em;
+  text-transform: uppercase;
+  color: var(--paper-light);
+  text-shadow: 0 1px 8px rgba(30, 60, 70, 0.45);
+  animation: fade 2s ease 1.2s backwards;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes logo-in {
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+}
+
+@media (max-width: 700px) {
+  .hero {
+    min-height: 560px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .layer,
+  .layer-in,
+  .hero__est {
+    animation: none;
+    translate: none;
+  }
+}
