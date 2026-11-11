@@ -53,7 +53,7 @@ export default function RegionExplorer() {
             <img className="explorer__mist blend" src={mtnB} alt="" aria-hidden="true" />
             <img
               key={region.id}
-              className="explorer__landmark blend"
+              className={`explorer__landmark blend ${region.id === "borobudur" ? "explorer__landmark--band" : ""}`.trim()}
               src={region.image}
               alt={region.landmark}
             />
