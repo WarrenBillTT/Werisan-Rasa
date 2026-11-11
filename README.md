@@ -4,6 +4,8 @@
 
 An elegant, parallax-driven microsite for **Wérisan Rasa** (Est. 2026) a culinary heritage concept celebrating Indonesia's regional cuisines through five cities and their landmarks. Built with **React**, **TypeScript**, and **Motion (Framer Motion)**, featuring hand-illustrated watercolor/ink artwork of iconic Nusantara landmarks woven into a cinematic scroll experience.
 
+![Image](https://github.com/WarrenBillTT/Werisan-Rasa/blob/main/Werisan.png)
+
 🔗 **Live Demo:**
 
 ![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black)
