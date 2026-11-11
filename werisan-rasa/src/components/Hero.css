@@ -1,23 +1,52 @@
 .hero {
-  --sky-w: max(900px, min(100vw, 120svh));
-  --sky-h: calc(var(--sky-w) * 0.5735);
+  --stage-w: max(100vw, 1100px);
+  --stage-h: 100svh;
   position: relative;
-  height: max(100svh, calc(var(--sky-h) + 260px));
-  min-height: 620px;
+  width: 100%;
+  height: 100svh;
+  min-height: 560px;
   overflow: hidden;
+  background-color: var(--paper);
+  z-index: 2; /* Di atas overlay noise (z: 1) agar jernih dan di bawah nav (z: 1000) */
 }
 
-.skyline {
+.hero__bg {
   position: absolute;
-  bottom: 0;
-  left: 50%;
-  margin-left: calc(var(--sky-w) / -2);
-  width: var(--sky-w);
-  aspect-ratio: 2000 / 1147;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
 }
 
-.layer--flip {
-  scale: -1 1;
+.hero__deco {
+  position: absolute;
+  display: block;
+  height: auto;
+  user-select: none;
+  pointer-events: none;
+  backface-visibility: hidden;
+  will-change: transform;
+  animation: rise 1.5s cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+  animation-delay: var(--d, 0s);
+  z-index: 1;
+}
+
+.stage {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-left: calc(var(--stage-w) / -2);
+  width: var(--stage-w);
+  height: var(--stage-h);
+  z-index: 2;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  will-change: transform;
+  contain: layout style;
 }
 
 .layer {
@@ -25,35 +54,54 @@
   display: block;
   height: auto;
   max-width: none;
-  mix-blend-mode: multiply;
   user-select: none;
   pointer-events: none;
-  translate: 0 calc(var(--py, 0) * var(--speed, 0) * 1px);
+  backface-visibility: hidden;
+  will-change: transform;
   animation: rise 1.5s cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
   animation-delay: var(--d, 0s);
 }
 
-.layer--deco {
-  animation-name: fade;
-  animation-duration: 2s;
-}
-
-.layer--map {
-  mix-blend-mode: normal;
-  filter: drop-shadow(0 6px 10px rgba(110, 70, 20, 0.25));
+.layer--flip {
+  scale: -1 1;
 }
 
 .hero__logo {
   position: absolute;
   margin: 0;
   line-height: 0;
+  pointer-events: none;
+  cursor: default;
+  user-select: none;
+  z-index: 10;
+}
+
+.hero__logo-float {
+  display: block;
+  width: 100%;
+  height: auto;
+  animation: logo-float 4.2s ease-in-out infinite alternate;
+  filter: drop-shadow(0 10px 18px rgba(91, 47, 26, 0.18));
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+@keyframes logo-float {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(0.3deg);
+  }
+  100% {
+    transform: translateY(2px) rotate(-0.2deg);
+  }
 }
 
 .layer-in {
   display: block;
   width: 100%;
   height: auto;
-  mix-blend-mode: multiply;
   user-select: none;
   animation: logo-in 1.6s cubic-bezier(0.2, 0.7, 0.2, 1) 0.8s backwards;
 }
@@ -61,25 +109,26 @@
 .hero__est {
   position: absolute;
   left: 0;
-  right: 0;
-  top: 89.5%;
+  width: 100%;
+  top: 91.5%;
   margin: 0;
   text-align: center;
   font-family: var(--font-display);
   font-weight: 500;
-  font-size: max(12px, calc(var(--sky-w) * 0.019));
+  font-size: clamp(12px, calc(var(--stage-w) * 0.015), 20px);
   letter-spacing: 0.5em;
   text-indent: 0.5em;
   text-transform: uppercase;
-  color: var(--paper-light);
-  text-shadow: 0 1px 8px rgba(30, 60, 70, 0.45);
+  color: var(--terra);
   animation: fade 2s ease 1.2s backwards;
+  pointer-events: none;
+  transform: translate3d(0, 0, 55px);
 }
 
 @keyframes rise {
   from {
     opacity: 0;
-    transform: translateY(40px);
+    transform: translateY(40px) translate3d(0, 0, var(--depth, 0px));
   }
 }
 
@@ -96,17 +145,17 @@
   }
 }
 
-@media (max-width: 700px) {
-  .hero {
-    min-height: 560px;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
+  .hero__deco,
   .layer,
   .layer-in,
-  .hero__est {
+  .hero__est,
+  .hero__logo-float {
     animation: none;
     translate: none;
+    transform: none;
+  }
+  .stage {
+    transform: none;
   }
 }
