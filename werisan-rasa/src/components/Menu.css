@@ -51,18 +51,18 @@
 }
 
 /* ==========================================================================
-   Showcase Hidangan Tunggal (Arsitektural, Bersih, Bukan AI Slop)
+   Showcase Hidangan (2 Kolom: Frame Foto Utama di Kiri, Detail di Kanan)
    ========================================================================== */
 .menu__showcase {
   display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.2fr);
-  gap: clamp(28px, 4.5vw, 56px);
-  align-items: center;
-  margin-top: 28px;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.25fr);
+  gap: clamp(28px, 4.5vw, 52px);
+  align-items: flex-start;
+  margin-top: 24px;
 }
 
-/* Frame Gambar (Clean Architectural Picture Frame) */
-.menu__frame-wrap {
+/* Kolom Visual (Frame Foto Tunggal yang Bersih & Mewah) */
+.menu__visual-col {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -71,87 +71,237 @@
 .menu__frame {
   position: relative;
   width: 100%;
-  max-width: 420px;
+  max-width: 440px;
   aspect-ratio: 4 / 3;
-  border-radius: 4px;
+  border-radius: 6px;
   background: #fbf9f5;
   border: 1px solid rgba(30, 22, 18, 0.14);
   box-shadow:
-    inset 0 0 0 8px #ffffff,
-    0 12px 32px rgba(30, 22, 18, 0.06);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    inset 0 0 0 6px #ffffff,
+    0 18px 40px -8px rgba(30, 22, 18, 0.1);
   overflow: hidden;
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .menu__frame:hover {
-  transform: translateY(-3px);
+  transform: translateY(-2px);
   box-shadow:
-    inset 0 0 0 8px #ffffff,
-    0 18px 40px -8px rgba(30, 22, 18, 0.12);
+    inset 0 0 0 6px #ffffff,
+    0 24px 48px -8px rgba(30, 22, 18, 0.15);
 }
 
-/* Image */
 .menu__image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.4s ease;
+  animation: menu-fade 0.35s ease-out;
 }
 
-.menu__frame:hover .menu__image {
-  transform: scale(1.02);
-}
-
-/* Placeholder Minimalis Elegan */
-.menu__placeholder {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 24px;
-  gap: 6px;
-}
-
-.menu__placeholder-label {
-  font-family: var(--font-display);
-  font-size: 1.35rem;
-  font-weight: 700;
-  color: var(--ink);
-  letter-spacing: 0.02em;
-}
-
-.menu__placeholder-hint {
+/* Badge Kelas di Sudut Frame */
+.menu__frame-badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  padding: 5px 12px;
+  border-radius: 999px;
   font-family: var(--font-body);
-  font-size: 0.82rem;
-  color: var(--ink-soft);
-  letter-spacing: 0.04em;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  background: rgba(12, 10, 9, 0.85);
+  color: #f5ede0;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(229, 165, 59, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.menu__frame-badge--royal-gold {
+  background: linear-gradient(135deg, rgba(30, 22, 18, 0.95), rgba(184, 134, 11, 0.9));
+  border-color: rgba(255, 215, 0, 0.5);
+  color: #fff9e6;
 }
 
 /* ==========================================================================
-   Teks Cerita & Karakteristik (Tipografi Editorial Murni)
+   Spesifikasi Kemasan (Mengisi Ruang Bawah Frame Gambar Secara Bermanfaat)
+   ========================================================================== */
+.menu__specs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  width: 100%;
+  max-width: 440px;
+  margin-top: 14px;
+  padding: 10px 14px;
+  background: #faf8f5;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  animation: menu-fade 0.3s ease-out;
+}
+
+.menu__spec-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.menu__spec-label {
+  font-family: var(--font-body);
+  font-size: 0.64rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--terra);
+}
+
+.menu__spec-val {
+  font-family: var(--font-display);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.25;
+}
+
+/* ==========================================================================
+   Tombol Pemilih Kelas Menu (1 Baris Penuh dari Kiri ke Kanan, Bukan AI Slop)
    ========================================================================== */
 .menu__details-wrap {
   display: flex;
   flex-direction: column;
 }
 
+.menu__tier-nav {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(10px, 1.8vw, 18px);
+  width: 100%;
+  margin-top: 24px;
+  margin-bottom: 24px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--line);
+}
+
+.menu__tier-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 11px 18px;
+  border-radius: 999px;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.menu__tier-roman {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--terra);
+  transition: color 0.25s ease;
+}
+
+.menu__tier-label {
+  font-family: var(--font-display);
+  font-size: 1.12rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+  transition: color 0.25s ease;
+}
+
+.menu__tier-dot {
+  font-size: 0.8rem;
+  color: var(--line);
+  opacity: 0.8;
+  transition: color 0.25s ease;
+}
+
+.menu__tier-level {
+  font-family: var(--font-body);
+  font-size: 0.76rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--ink-soft);
+  transition: color 0.25s ease;
+}
+
+.menu__tier-btn:hover {
+  border-color: var(--terra);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(196, 81, 47, 0.1);
+}
+
+.menu__tier-btn:hover .menu__tier-label {
+  color: var(--terra);
+}
+
+.menu__tier-btn.is-active {
+  background: #0c0a09;
+  border-color: var(--gold);
+  box-shadow: 0 4px 16px rgba(12, 10, 9, 0.16);
+  transform: translateY(-2px);
+}
+
+.menu__tier-btn.is-active .menu__tier-roman {
+  color: var(--gold);
+}
+
+.menu__tier-btn.is-active .menu__tier-label {
+  color: #ffffff;
+}
+
+.menu__tier-btn.is-active .menu__tier-dot {
+  color: rgba(229, 165, 59, 0.45);
+}
+
+.menu__tier-btn.is-active .menu__tier-level {
+  color: #d8cec3;
+}
+
+/* ==========================================================================
+   Teks Cerita & Karakteristik (Tipografi Editorial Murni)
+   ========================================================================== */
+.menu__content-body {
+  animation: menu-fade 0.35s ease-out;
+}
+
+.menu__meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
 .menu__category {
-  font-size: 0.74rem;
+  font-size: 0.72rem;
   font-weight: 600;
-  letter-spacing: 0.24em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--terra);
-  margin-bottom: 8px;
+}
+
+.menu__tagline {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--ink-soft);
 }
 
 .menu__dish-title {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(2rem, 3.8vw, 2.8rem);
   font-weight: 700;
   line-height: 1.15;
   color: var(--ink);
@@ -160,18 +310,18 @@
 
 .menu__dish-lead {
   margin-top: 10px;
-  font-size: 0.96rem;
-  line-height: 1.68;
+  font-size: 0.95rem;
+  line-height: 1.65;
   color: var(--ink-soft);
 }
 
-/* Detail Karakteristik tanpa font bold yang bentrok */
+/* Detail Karakteristik */
 .menu__traits {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  margin-top: 20px;
-  padding-top: 18px;
+  margin-top: 18px;
+  padding-top: 16px;
   border-top: 1px solid var(--line);
 }
 
@@ -197,22 +347,36 @@
 }
 
 .menu__note {
-  margin-top: 20px;
-  font-size: 0.76rem;
+  margin-top: 18px;
+  font-size: 0.75rem;
   font-weight: 500;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--ink-soft);
-  opacity: 0.8;
+  opacity: 0.85;
+}
+
+@keyframes menu-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @media (max-width: 900px) {
   .menu__showcase {
     grid-template-columns: 1fr;
-    gap: 28px;
+    gap: 24px;
   }
 
   .menu__frame {
     margin-inline: auto;
+  }
+
+  .menu__tier-nav {
+    grid-template-columns: 1fr;
+    gap: 8px;
   }
 }
