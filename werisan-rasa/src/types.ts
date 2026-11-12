@@ -10,11 +10,12 @@ export interface Dish {
 
 export interface Region {
   id: string;
-  city: string;
-  province: string;
-  landmark: string;
-  image: string;
+  city: string; // "Sumatra", "Jawa", "Kalimantan", "Sulawesi", "Papua"
+  tagline: string;
   accent: string;
   intro: string;
   dishes: Dish[];
+  province?: string;
+  landmark?: string;
+  image?: string;
 }

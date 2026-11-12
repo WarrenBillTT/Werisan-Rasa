@@ -1,198 +1,242 @@
 .explorer {
   position: relative;
-  padding-block: var(--section-y);
+  padding-top: clamp(28px, 3.5vw, 40px);
+  padding-bottom: clamp(36px, 4.5vw, 52px);
+  background: linear-gradient(180deg, #ffffff 0%, #faf8f5 15%, #faf8f5 85%, #ffffff 100%);
   overflow: hidden;
-  background: linear-gradient(180deg, transparent, rgba(236, 227, 211, 0.55) 18%, rgba(236, 227, 211, 0.55) 82%, transparent);
 }
 
+/* Ornamen Alam: Ranting Plum di Sisi Kiri */
 .explorer__plum {
   position: absolute;
-  right: -8%;
-  top: 2%;
-  width: min(30vw, 380px);
-  opacity: 0.4;
-  scale: -1 1;
+  left: -5%;
+  top: 1%;
+  width: min(28vw, 320px);
+  height: auto;
+  opacity: 0.14;
   pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
+/* Ornamen Alam: Siluet Gunung di Sisi Kanan Bawah */
+.explorer__mtn {
+  position: absolute;
+  right: -4%;
+  bottom: 0;
+  width: min(28vw, 340px);
+  height: auto;
+  opacity: 0.14;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  -webkit-mask-image: linear-gradient(to top, #000 50%, transparent 100%), linear-gradient(to left, #000 60%, transparent 100%);
+  mask-image: linear-gradient(to top, #000 50%, transparent 100%), linear-gradient(to left, #000 60%, transparent 100%);
+  -webkit-mask-composite: destination-in;
+  mask-composite: intersect;
 }
 
 .explorer .container {
   position: relative;
+  z-index: 1;
 }
 
 .explorer__head {
-  max-width: 640px;
+  max-width: 680px;
 }
 
+.explorer__head .section-title {
+  font-size: clamp(2rem, 4.2vw, 3.2rem);
+  margin-top: 10px;
+}
+
+/* ==========================================================================
+   Tabs Navigasi Pulau (Ringkas & Sleek)
+   ========================================================================== */
 .explorer__tabs {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  margin-top: 44px;
-  padding-bottom: 20px;
+  margin-top: 24px;
+  padding-bottom: 16px;
   border-bottom: 1px solid var(--line);
 }
 
 .explorer__tab {
-  padding: 10px 22px;
+  padding: 8px 22px;
   border: 1px solid var(--line);
   border-radius: 999px;
-  background: transparent;
+  background: #ffffff;
   color: var(--ink);
   font-family: var(--font-display);
-  font-size: 1.25rem;
+  font-size: 1.18rem;
   font-weight: 600;
+  letter-spacing: 0.02em;
   cursor: pointer;
   transition:
     background-color 0.25s ease,
     color 0.25s ease,
-    border-color 0.25s ease;
+    border-color 0.25s ease,
+    transform 0.25s ease;
 }
 
 .explorer__tab:hover {
-  border-color: var(--ink);
+  border-color: var(--terra);
+  color: var(--terra);
+  transform: translateY(-2px);
 }
 
 .explorer__tab.is-active {
-  background: var(--ink);
-  border-color: var(--ink);
-  color: var(--paper-light);
+  background: var(--terra);
+  border-color: var(--terra);
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(196, 81, 47, 0.22);
 }
 
-.explorer__panel {
+/* ==========================================================================
+   Editorial Spread (Ringkas, Human-Crafted, Bukan AI Slop)
+   ========================================================================== */
+.explorer__spread {
   display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
-  gap: clamp(28px, 6vw, 88px);
-  align-items: center;
-  margin-top: 48px;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.25fr);
+  gap: clamp(28px, 4vw, 52px);
+  margin-top: 28px;
+  padding-top: 8px;
+  animation: spread-fade 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
-.explorer__art {
-  position: relative;
-  display: grid;
-  place-items: center;
-  min-height: 380px;
-  aspect-ratio: 5 / 4;
+/* Kolom Kiri: Identitas & Fakta Kunci */
+.explorer__col-identity {
+  display: flex;
+  flex-direction: column;
 }
 
-.explorer__glow {
-  position: absolute;
-  inset: 6%;
-  border-radius: 50%;
-  background: radial-gradient(circle, color-mix(in srgb, var(--accent) 34%, transparent), transparent 68%);
-  transition: background 0.6s ease;
-}
-
-.explorer__mist {
-  position: absolute;
-  left: -6%;
-  bottom: 4%;
-  width: 55%;
-  opacity: 0.5;
-}
-
-.explorer__landmark {
-  position: relative;
-  width: auto;
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  animation: landmark-in 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
-}
-
-.explorer__landmark--band {
-  width: 100%;
-  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 12%, #000 88%, transparent 100%);
-  mask-image: linear-gradient(to right, transparent 0, #000 12%, #000 88%, transparent 100%);
-}
-
-.explorer__info {
-  animation: info-in 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
-}
-
-.explorer__place {
-  font-size: 0.78rem;
-  font-weight: 500;
+.explorer__tagline {
+  font-size: 0.74rem;
+  font-weight: 600;
   letter-spacing: 0.26em;
   text-transform: uppercase;
   color: var(--accent);
 }
 
-.explorer__city {
-  margin-top: 8px;
-  font-size: clamp(2.6rem, 6vw, 4.6rem);
+.explorer__island-name {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 4.5vw, 3.4rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--ink);
+  margin: 6px 0 0;
 }
 
-.explorer__intro {
-  margin-top: 16px;
-  max-width: 52ch;
+.explorer__essence {
+  margin-top: 12px;
+  font-size: 1rem;
+  line-height: 1.68;
   color: var(--ink-soft);
 }
 
-.explorer__dishes {
-  list-style: none;
-  margin: 30px 0 0;
-  padding: 0;
+.explorer__facts {
+  display: grid;
+  gap: 12px;
+  margin-top: 22px;
+  padding-top: 18px;
   border-top: 1px solid var(--line);
 }
 
-.explorer__dishes li {
-  padding: 18px 0 18px 22px;
-  border-bottom: 1px solid var(--line);
-  position: relative;
+.explorer__fact {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
-.explorer__dishes li::before {
-  content: "";
-  position: absolute;
-  left: 2px;
-  top: 30px;
-  width: 8px;
-  height: 8px;
-  transform: rotate(45deg);
-  background: var(--accent);
+.explorer__fact-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
 }
 
-.explorer__dishes h4 {
-  margin: 0;
+.explorer__fact-val {
   font-family: var(--font-display);
-  font-size: 1.55rem;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.35;
+}
+
+/* Kolom Kanan: 3 Narasi Editorial dengan Pembatas Halus */
+.explorer__col-narratives {
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid var(--line);
+  padding-left: clamp(20px, 3.5vw, 44px);
+}
+
+.explorer__narrative-block {
+  padding-block: 16px;
+  border-bottom: 1px solid var(--line);
+}
+
+.explorer__narrative-block:first-child {
+  padding-top: 0;
+}
+
+.explorer__narrative-block:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.explorer__narrative-header {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 6px;
+}
+
+.explorer__narrative-badge {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.explorer__narrative-title {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
   font-weight: 700;
+  color: var(--ink);
+  margin: 0;
+  line-height: 1.25;
 }
 
-.explorer__dishes p {
-  margin-top: 4px;
-  font-size: 0.95rem;
-  line-height: 1.6;
+.explorer__narrative-text {
+  font-size: 0.92rem;
+  line-height: 1.65;
   color: var(--ink-soft);
+  margin: 0;
 }
 
-@keyframes landmark-in {
+@keyframes spread-fade {
   from {
     opacity: 0;
-    transform: translateY(24px) scale(0.97);
+    transform: translateY(12px);
   }
 }
 
-@keyframes info-in {
-  from {
-    opacity: 0;
-    transform: translateX(18px);
-  }
-}
-
-@media (max-width: 900px) {
-  .explorer__panel {
+@media (max-width: 860px) {
+  .explorer__spread {
     grid-template-columns: 1fr;
+    gap: 28px;
   }
 
-  .explorer__art {
-    min-height: 0;
-    aspect-ratio: auto;
-    height: 300px;
-  }
-
-  .explorer__landmark {
-    max-height: 300px;
+  .explorer__col-narratives {
+    border-left: none;
+    border-top: 1px solid var(--line);
+    padding-left: 0;
+    padding-top: 20px;
   }
 }
 
@@ -207,12 +251,13 @@
 
   .explorer__tab {
     flex: none;
+    font-size: 1.05rem;
+    padding: 7px 18px;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .explorer__landmark,
-  .explorer__info {
+  .explorer__spread {
     animation: none;
   }
 }

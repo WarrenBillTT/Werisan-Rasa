@@ -1,79 +1,86 @@
 import { useState } from "react";
 import Reveal from "./Reveal";
-import { regions } from "../data/regions";
+import { islands } from "../data/islands";
 import type { CSSVars } from "../types";
-import mtnB from "../assets/mtn-b.webp";
 import plumLeft from "../assets/plum-left.webp";
+import mtnC from "../assets/mtn-c.webp";
 import "./RegionExplorer.css";
 
 export default function RegionExplorer() {
-  const [activeId, setActiveId] = useState(regions[0].id);
-  const region = regions.find((r) => r.id === activeId) ?? regions[0];
-  const style: CSSVars = { "--accent": region.accent };
+  const [activeId, setActiveId] = useState(islands[0].id);
+  const island = islands.find((item) => item.id === activeId) ?? islands[0];
+  const style: CSSVars = { "--accent": island.accent };
 
   return (
     <section id="nusantara" className="explorer">
+      {/* Ornamen Alam: Ranting Pohon Plum di Kiri & Gunung di Kanan */}
       <img className="explorer__plum blend" src={plumLeft} alt="" aria-hidden="true" />
+      <img className="explorer__mtn blend" src={mtnC} alt="" aria-hidden="true" />
+
       <div className="container">
         <Reveal className="explorer__head">
           <span className="eyebrow">Jelajah Nusantara</span>
-          <h2 className="section-title">Lima kota, lima cara merawat rasa.</h2>
-          <p className="section-lead">
-            Setiap daerah punya landmark yang kita kenal dan dapur yang kita rindukan. Pilih satu
-            kota untuk melihat hidangan yang kami hidupkan kembali.
-          </p>
+          <h2 className="section-title">Lima pulau, lima bentang budaya dan rasa.</h2>
         </Reveal>
 
-        <div className="explorer__tabs" role="tablist" aria-label="Pilih kota">
-          {regions.map((r) => (
+        <div className="explorer__tabs" role="tablist" aria-label="Pilih pulau Nusantara">
+          {islands.map((item) => (
             <button
-              key={r.id}
-              id={`tab-${r.id}`}
+              key={item.id}
+              id={`tab-${item.id}`}
               role="tab"
               type="button"
-              aria-selected={r.id === activeId}
-              aria-controls="region-panel"
-              className={`explorer__tab ${r.id === activeId ? "is-active" : ""}`}
-              onClick={() => setActiveId(r.id)}
+              aria-selected={item.id === activeId}
+              aria-controls="island-panel"
+              className={`explorer__tab ${item.id === activeId ? "is-active" : ""}`}
+              onClick={() => setActiveId(item.id)}
             >
-              {r.city}
+              {item.name}
             </button>
           ))}
         </div>
 
         <div
-          id="region-panel"
+          id="island-panel"
           role="tabpanel"
-          aria-labelledby={`tab-${region.id}`}
-          className="explorer__panel"
+          aria-labelledby={`tab-${island.id}`}
+          className="explorer__spread"
           style={style}
+          key={island.id}
         >
-          <div className="explorer__art">
-            <div className="explorer__glow" />
-            <img className="explorer__mist blend" src={mtnB} alt="" aria-hidden="true" />
-            <img
-              key={region.id}
-              className={`explorer__landmark blend ${region.id === "borobudur" ? "explorer__landmark--band" : ""}`.trim()}
-              src={region.image}
-              alt={region.landmark}
-            />
+          {/* Kolom Kiri: Esensi & Fakta Identitas Pulau */}
+          <div className="explorer__col-identity">
+            <span className="explorer__tagline">{island.tagline}</span>
+            <h3 className="explorer__island-name">Pulau {island.name}</h3>
+            <p className="explorer__essence">{island.essence}</p>
+
+            <div className="explorer__facts">
+              <div className="explorer__fact">
+                <span className="explorer__fact-label">Rempah Utama</span>
+                <span className="explorer__fact-val">{island.spices}</span>
+              </div>
+              <div className="explorer__fact">
+                <span className="explorer__fact-label">Karakter Rasa</span>
+                <span className="explorer__fact-val">{island.flavor}</span>
+              </div>
+              <div className="explorer__fact">
+                <span className="explorer__fact-label">Tradisi Meja</span>
+                <span className="explorer__fact-val">{island.tradition}</span>
+              </div>
+            </div>
           </div>
 
-          <div className="explorer__info" key={`info-${region.id}`}>
-            <p className="explorer__place">
-              {region.landmark} · {region.province}
-            </p>
-            <h3 className="explorer__city">{region.city}</h3>
-            <p className="explorer__intro">{region.intro}</p>
-
-            <ul className="explorer__dishes">
-              {region.dishes.map((dish) => (
-                <li key={dish.name}>
-                  <h4>{dish.name}</h4>
-                  <p>{dish.description}</p>
-                </li>
-              ))}
-            </ul>
+          {/* Kolom Kanan: 3 Narasi Editorial Terpadu (Bukan Kotak AI Slop) */}
+          <div className="explorer__col-narratives">
+            {island.traits.map((trait) => (
+              <article key={trait.title} className="explorer__narrative-block">
+                <div className="explorer__narrative-header">
+                  <span className="explorer__narrative-badge">{trait.category}</span>
+                  <h4 className="explorer__narrative-title">{trait.title}</h4>
+                </div>
+                <p className="explorer__narrative-text">{trait.text}</p>
+              </article>
+            ))}
           </div>
         </div>
       </div>

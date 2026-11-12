@@ -1,7 +1,9 @@
 .footer {
   position: relative;
   overflow: hidden;
-  padding-top: 60px;
+  padding-top: 80px;
+  background-color: #faf8f5;
+  border-top: 1px solid var(--line);
 }
 
 .footer__band {
@@ -13,6 +15,10 @@
   height: auto;
   margin-top: calc(max(100vw, 900px) * -0.05);
   pointer-events: none;
+  opacity: 0.22;
+  filter: grayscale(40%);
+  -webkit-mask-image: linear-gradient(to top, #000 35%, transparent 100%);
+  mask-image: linear-gradient(to top, #000 35%, transparent 100%);
 }
 
 .footer__inner {
@@ -27,6 +33,7 @@
 .footer__logo {
   width: 150px;
   height: auto;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.06));
 }
 
 .footer__links {
@@ -41,6 +48,8 @@
   font-weight: 500;
   letter-spacing: 0.22em;
   text-transform: uppercase;
+  color: var(--ink-soft);
+  transition: color 0.25s ease;
 }
 
 .footer__links a:hover {

@@ -24,6 +24,7 @@ const values = [
 export default function Values() {
   return (
     <section id="cerita" className="values">
+      {/* Ornamen Alam: Ranting Plum di Kanan Atas & Siluet Gunung di Kiri Bawah */}
       <img className="values__plum blend" src={plumRight} alt="" aria-hidden="true" />
       <img className="values__mtn blend" src={mtnC} alt="" aria-hidden="true" />
 
