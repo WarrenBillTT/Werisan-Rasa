@@ -6,7 +6,7 @@ An elegant, parallax-driven microsite for **Wérisan Rasa** (Est. 2026) a culina
 
 ![Image](https://github.com/WarrenBillTT/Werisan-Rasa/blob/main/Werisan.png)
 
-🔗 **Live Demo:**
+🔗 **Live Demo:** https://werisan-rasa.vercel.app/
 
 ![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black)
 ![TypeScript](https://img.shields.io/badge/TypeScript-7-3178C6?logo=typescript&logoColor=white)
@@ -111,6 +111,6 @@ werisan-rasa/
 | `npm run build` | Type-checks and builds the project for production |
 | `npm run preview` | Previews the production build locally |
 
-## 📄 License
+## License
 
 This project was built for personal/portfolio use. Feel free to use it as a reference, but please don't copy it identically for your own portfolio  the illustrated artwork and regional content are original to this project.
