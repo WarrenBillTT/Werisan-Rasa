@@ -1,5 +1,26 @@
 .about {
-  padding-block: var(--section-y);
+  position: relative;
+  overflow: hidden;
+  padding-top: clamp(28px, 3.5vw, 40px);
+  padding-bottom: clamp(36px, 4.5vw, 52px);
+}
+
+/* Ornamen Ranting Plum di Sisi Kanan Atas */
+.about__plum {
+  position: absolute;
+  right: -5%;
+  top: 1%;
+  width: min(28vw, 320px);
+  height: auto;
+  opacity: 0.14;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
+.about .container {
+  position: relative;
+  z-index: 1;
 }
 
 .about__grid {
@@ -48,13 +69,13 @@
 
 .about__pillars {
   list-style: none;
-  margin: 44px 0 0;
+  margin: 22px 0 0;
   padding: 0;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 28px;
+  gap: 24px;
   border-top: 1px solid var(--line);
-  padding-top: 30px;
+  padding-top: 16px;
 }
 
 .about__pillars h3 {

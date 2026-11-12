@@ -13,6 +13,11 @@ export default function App() {
       <Nav />
       <main>
         <Hero />
+        <div className="hero-divider" aria-hidden="true">
+          <div className="container hero-divider__inner">
+            <span className="hero-divider__brand">Wérisan Rasa</span>
+          </div>
+        </div>
         <About />
         <RegionExplorer />
         <Menu />

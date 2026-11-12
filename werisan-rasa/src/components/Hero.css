@@ -6,7 +6,7 @@
   height: 100svh;
   min-height: 560px;
   overflow: hidden;
-  background-color: var(--paper);
+  background-color: #e0d5c3;
   z-index: 2; /* Di atas overlay noise (z: 1) agar jernih dan di bawah nav (z: 1000) */
 }
 

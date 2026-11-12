@@ -1,127 +1,218 @@
 .menu {
-  padding-block: var(--section-y);
-}
-
-.menu__filters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 36px;
-}
-
-.menu__chip {
-  padding: 8px 20px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: transparent;
-  color: var(--ink);
-  font-family: var(--font-body);
-  font-size: 0.78rem;
-  font-weight: 500;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition:
-    background-color 0.25s ease,
-    color 0.25s ease,
-    border-color 0.25s ease;
-}
-
-.menu__chip:hover {
-  border-color: var(--ink);
-}
-
-.menu__chip.is-active {
-  background: var(--terra);
-  border-color: var(--terra);
-  color: var(--paper-light);
-}
-
-.menu__grid {
-  list-style: none;
-  margin: 36px 0 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 22px;
-}
-
-.menu__card {
   position: relative;
+  padding-top: clamp(28px, 3.5vw, 40px);
+  padding-bottom: clamp(36px, 4.5vw, 52px);
+  background-color: #ffffff;
+  overflow: hidden;
+}
+
+/* Ornamen Alam: Ranting Plum di Sisi Kanan Atas */
+.menu__plum {
+  position: absolute;
+  right: -5%;
+  top: 1%;
+  width: min(28vw, 320px);
+  height: auto;
+  opacity: 0.14;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
+/* Ornamen Alam: Siluet Gunung di Sisi Kanan Bawah */
+.menu__mtn {
+  position: absolute;
+  right: -4%;
+  bottom: -2%;
+  width: min(28vw, 340px);
+  height: auto;
+  opacity: 0.14;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  -webkit-mask-image: linear-gradient(to top, #000 50%, transparent 100%), linear-gradient(to left, #000 60%, transparent 100%);
+  mask-image: linear-gradient(to top, #000 50%, transparent 100%), linear-gradient(to left, #000 60%, transparent 100%);
+  -webkit-mask-composite: destination-in;
+  mask-composite: intersect;
+}
+
+.menu .container {
+  position: relative;
+  z-index: 1;
+}
+
+.menu__head {
+  max-width: 680px;
+}
+
+.menu__head .section-title {
+  font-size: clamp(2rem, 4.2vw, 3.2rem);
+  margin-top: 10px;
+}
+
+/* ==========================================================================
+   Showcase Hidangan Tunggal (Arsitektural, Bersih, Bukan AI Slop)
+   ========================================================================== */
+.menu__showcase {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.2fr);
+  gap: clamp(28px, 4.5vw, 56px);
+  align-items: center;
+  margin-top: 28px;
+}
+
+/* Frame Gambar (Clean Architectural Picture Frame) */
+.menu__frame-wrap {
   display: flex;
   flex-direction: column;
-  padding: 28px 26px 24px;
-  background: rgba(236, 227, 211, 0.6);
-  border: 1px solid var(--line);
+  align-items: center;
+}
+
+.menu__frame {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  aspect-ratio: 4 / 3;
+  border-radius: 4px;
+  background: #fbf9f5;
+  border: 1px solid rgba(30, 22, 18, 0.14);
+  box-shadow:
+    inset 0 0 0 8px #ffffff,
+    0 12px 32px rgba(30, 22, 18, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
   transition:
-    transform 0.35s ease,
-    box-shadow 0.35s ease,
-    border-color 0.35s ease;
-  animation: card-in 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
-.menu__card::before {
-  content: "";
-  position: absolute;
-  left: -1px;
-  right: -1px;
-  top: -1px;
-  height: 3px;
-  background: var(--accent);
+.menu__frame:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    inset 0 0 0 8px #ffffff,
+    0 18px 40px -8px rgba(30, 22, 18, 0.12);
 }
 
-.menu__card:hover {
-  transform: translateY(-4px);
-  border-color: var(--accent);
-  box-shadow: 0 14px 30px -18px rgba(91, 47, 26, 0.5);
+/* Image */
+.menu__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
 }
 
-.menu__region {
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 0.26em;
+.menu__frame:hover .menu__image {
+  transform: scale(1.02);
+}
+
+/* Placeholder Minimalis Elegan */
+.menu__placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 24px;
+  gap: 6px;
+}
+
+.menu__placeholder-label {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: 0.02em;
+}
+
+.menu__placeholder-hint {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  letter-spacing: 0.04em;
+}
+
+/* ==========================================================================
+   Teks Cerita & Karakteristik (Tipografi Editorial Murni)
+   ========================================================================== */
+.menu__details-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu__category {
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--terra);
+  margin-bottom: 8px;
 }
 
-.menu__card h3 {
-  margin-top: 10px;
-  font-size: 1.8rem;
+.menu__dish-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--ink);
+  margin: 0;
 }
 
-.menu__card p {
+.menu__dish-lead {
   margin-top: 10px;
-  flex: 1;
-  font-size: 0.95rem;
-  line-height: 1.6;
+  font-size: 0.96rem;
+  line-height: 1.68;
   color: var(--ink-soft);
 }
 
-.menu__tags {
+/* Detail Karakteristik tanpa font bold yang bentrok */
+.menu__traits {
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 18px;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
 }
 
-.menu__tags span {
-  padding: 3px 12px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
+.menu__trait-item {
+  display: grid;
+  gap: 2px;
+}
+
+.menu__trait-label {
+  font-family: var(--font-body);
   font-size: 0.72rem;
-  letter-spacing: 0.08em;
-  color: var(--ink);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--terra);
 }
 
-@keyframes card-in {
-  from {
-    opacity: 0;
-    transform: translateY(18px);
+.menu__trait-text {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+.menu__note {
+  margin-top: 20px;
+  font-size: 0.76rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  opacity: 0.8;
+}
+
+@media (max-width: 900px) {
+  .menu__showcase {
+    grid-template-columns: 1fr;
+    gap: 28px;
   }
-}
 
-@media (prefers-reduced-motion: reduce) {
-  .menu__card {
-    animation: none;
+  .menu__frame {
+    margin-inline: auto;
   }
 }

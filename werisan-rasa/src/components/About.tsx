@@ -1,6 +1,7 @@
 import Reveal from "./Reveal";
 import garuda from "../assets/garuda.webp";
 import mtnE from "../assets/mtn-e.webp";
+import plumRight from "../assets/plum-right.webp";
 import "./About.css";
 
 const pillars = [
@@ -21,6 +22,9 @@ const pillars = [
 export default function About() {
   return (
     <section id="tentang" className="about">
+      {/* Ornamen Ranting Pohon di Kanan Atas */}
+      <img className="about__plum blend" src={plumRight} alt="" aria-hidden="true" />
+
       <div className="container about__grid">
         <div className="about__art">
           <img className="about__mist blend" src={mtnE} alt="" aria-hidden="true" />
