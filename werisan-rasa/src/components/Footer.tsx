@@ -6,6 +6,7 @@ const links = [
   { href: "#tentang", label: "Tentang" },
   { href: "#nusantara", label: "Nusantara" },
   { href: "#hidangan", label: "Hidangan" },
+  { href: "#kuis-rasa", label: "Kuis Rasa" },
   { href: "#kontak", label: "Kontak" },
 ];
 

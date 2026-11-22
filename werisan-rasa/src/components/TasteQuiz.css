@@ -1,0 +1,396 @@
+/* ==========================================================================
+   Kurasi Karakter Rasa (Taste Alignment Guide) - Professional Editorial
+   ========================================================================== */
+
+.quiz {
+  position: relative;
+  padding-top: clamp(64px, 8vw, 110px);
+  padding-bottom: clamp(64px, 8vw, 110px);
+  background: linear-gradient(180deg, #ffffff 0%, #faf8f5 25%, #faf8f5 75%, #ffffff 100%);
+  overflow: hidden;
+}
+
+/* Ornamen Alam Halus */
+.quiz__plum {
+  position: absolute;
+  left: -5%;
+  top: 2%;
+  width: min(28vw, 320px);
+  height: auto;
+  opacity: 0.12;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
+.quiz__mtn {
+  position: absolute;
+  right: -4%;
+  bottom: 0;
+  width: min(28vw, 340px);
+  height: auto;
+  opacity: 0.12;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  -webkit-mask-image: linear-gradient(to top, #000 50%, transparent 100%);
+  mask-image: linear-gradient(to top, #000 50%, transparent 100%);
+}
+
+.quiz .container {
+  position: relative;
+  z-index: 1;
+}
+
+.quiz__head {
+  max-width: 680px;
+  margin-bottom: clamp(32px, 4.5vw, 54px);
+}
+
+.quiz__head .section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.2vw, 3.2rem);
+  font-weight: 700;
+  color: var(--ink);
+  margin-top: 10px;
+}
+
+.quiz__head .section-lead {
+  margin-top: 12px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+
+/* ==========================================================================
+   Consultation Card
+   ========================================================================== */
+.quiz__card {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: 0 16px 40px -10px rgba(30, 22, 18, 0.06);
+  padding: clamp(28px, 4.5vw, 48px);
+  position: relative;
+}
+
+/* Question Header & Progress */
+.quiz__progress-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.quiz__step-indicator {
+  font-family: var(--font-body);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--terra);
+}
+
+.quiz__step-count {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+
+.quiz__progress-bar-track {
+  width: 100%;
+  height: 4px;
+  background-color: #f0ebe1;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+
+.quiz__progress-bar-fill {
+  height: 100%;
+  background-color: var(--terra);
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
+
+/* Question Text */
+.quiz__question-text {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.35;
+  margin-bottom: 26px;
+}
+
+/* Option Buttons */
+.quiz__options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.quiz__option-btn {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding: 16px 20px;
+  border-radius: 8px;
+  background-color: #faf8f5;
+  border: 1px solid var(--line);
+  cursor: pointer;
+  text-align: left;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.quiz__option-btn:hover {
+  transform: translateY(-2px);
+  background-color: #ffffff;
+  border-color: var(--terra);
+  box-shadow: 0 4px 16px rgba(196, 81, 47, 0.08);
+}
+
+.quiz__option-letter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  border: 1px solid var(--line);
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--terra);
+  flex-shrink: 0;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.quiz__option-btn:hover .quiz__option-letter {
+  background-color: var(--terra);
+  color: #ffffff;
+  border-color: var(--terra);
+}
+
+.quiz__option-text {
+  font-family: var(--font-body);
+  font-size: 0.94rem;
+  line-height: 1.5;
+  color: var(--ink);
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   Quiz Result Card (Curated Tasting Report)
+   ========================================================================== */
+.quiz-result {
+  text-align: center;
+  animation: result-fade-up 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.quiz-result__emblem {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 1px solid rgba(196, 81, 47, 0.35);
+  background: rgba(196, 81, 47, 0.06);
+  color: var(--terra);
+  font-size: 1.8rem;
+  margin-bottom: 14px;
+}
+
+.quiz-result__badge {
+  display: inline-block;
+  padding: 4px 14px;
+  border-radius: 999px;
+  background: rgba(184, 134, 11, 0.1);
+  border: 1px solid rgba(184, 134, 11, 0.3);
+  color: var(--gold);
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.quiz-result__persona {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.quiz-result__snack {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.2rem;
+  color: var(--terra);
+  margin-top: 6px;
+}
+
+/* Showcase Box Inside Result */
+.quiz-result__box {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 24px;
+  background-color: #faf8f5;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 18px;
+  margin: 26px 0;
+  text-align: left;
+  align-items: center;
+}
+
+.quiz-result__image-wrap {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(30, 22, 18, 0.08);
+}
+
+.quiz-result__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.quiz-result__narrative {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.quiz-result__lead {
+  font-family: var(--font-body);
+  font-size: 0.94rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+.quiz-result__stamp-note {
+  font-family: var(--font-body);
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--terra);
+  margin-top: 4px;
+  letter-spacing: 0.02em;
+}
+
+/* Action Buttons */
+.quiz-result__actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 24px;
+}
+
+.quiz-result__btn-explore {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 26px;
+  border-radius: 999px;
+  background-color: #0c0a09;
+  border: 1px solid var(--gold);
+  color: #fff9e6;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.quiz-result__btn-explore:hover {
+  transform: translateY(-2px);
+  background-color: #1a1614;
+}
+
+.quiz-result__btn-passport {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 24px;
+  border-radius: 999px;
+  background-color: #ffffff;
+  border: 1px solid var(--line);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.quiz-result__btn-passport:hover {
+  transform: translateY(-2px);
+  border-color: var(--terra);
+  color: var(--terra);
+}
+
+.quiz-result__btn-retry {
+  background: none;
+  border: none;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 6px 12px;
+}
+
+@keyframes result-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 680px) {
+  .quiz-result__box {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .quiz-result__image-wrap {
+    max-width: 220px;
+    margin: 0 auto;
+  }
+  .quiz-result__actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  .quiz-result__btn-explore,
+  .quiz-result__btn-passport {
+    width: 100%;
+    justify-content: center;
+  }
+}

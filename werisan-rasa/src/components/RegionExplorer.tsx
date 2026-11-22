@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Reveal from "./Reveal";
 import { islands } from "../data/islands";
+import { useTastePassport } from "../context/TastePassportContext";
 import type { CSSVars } from "../types";
 import plumLeft from "../assets/plum-left.webp";
 import mtnC from "../assets/mtn-c.webp";
@@ -8,8 +9,15 @@ import "./RegionExplorer.css";
 
 export default function RegionExplorer() {
   const [activeId, setActiveId] = useState(islands[0].id);
+  const { unlockStamp } = useTastePassport();
   const island = islands.find((item) => item.id === activeId) ?? islands[0];
   const style: CSSVars = { "--accent": island.accent };
+
+  useEffect(() => {
+    if (activeId === "sumatra" || activeId === "jawa") {
+      unlockStamp(activeId);
+    }
+  }, [activeId, unlockStamp]);
 
   return (
     <section id="nusantara" className="explorer">

@@ -22,7 +22,7 @@ export default function Contact() {
         <Reveal delay={160} className="contact__actions">
           <a
             className="contact__btn contact__btn--wa"
-            href="https://wa.me/6281234567890"
+            href="https://wa.me/6283865038866"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Hubungi via WhatsApp"
@@ -42,7 +42,7 @@ export default function Contact() {
 
           <a
             className="contact__btn contact__btn--ig"
-            href="https://instagram.com/werisanrasa"
+            href="https://www.instagram.com/werisan_rasa"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Kunjungi Instagram Wérisan Rasa"

@@ -1,7 +1,7 @@
 .menu {
   position: relative;
-  padding-top: clamp(28px, 3.5vw, 40px);
-  padding-bottom: clamp(36px, 4.5vw, 52px);
+  padding-top: clamp(60px, 7vw, 100px);
+  padding-bottom: clamp(60px, 7vw, 100px);
   background-color: #ffffff;
   overflow: hidden;
 }
@@ -30,10 +30,8 @@
   pointer-events: none;
   user-select: none;
   z-index: 0;
-  -webkit-mask-image: linear-gradient(to top, #000 50%, transparent 100%), linear-gradient(to left, #000 60%, transparent 100%);
-  mask-image: linear-gradient(to top, #000 50%, transparent 100%), linear-gradient(to left, #000 60%, transparent 100%);
-  -webkit-mask-composite: destination-in;
-  mask-composite: intersect;
+  -webkit-mask-image: linear-gradient(to top, #000 50%, transparent 100%);
+  mask-image: linear-gradient(to top, #000 50%, transparent 100%);
 }
 
 .menu .container {
@@ -46,139 +44,24 @@
 }
 
 .menu__head .section-title {
+  font-family: var(--font-display);
   font-size: clamp(2rem, 4.2vw, 3.2rem);
+  font-weight: 700;
+  color: var(--ink);
   margin-top: 10px;
 }
 
 /* ==========================================================================
-   Showcase Hidangan (2 Kolom: Frame Foto Utama di Kiri, Detail di Kanan)
+   Tombol Pemilih Hidangan (1 Baris Sederhana & Mewah)
    ========================================================================== */
-.menu__showcase {
-  display: grid;
-  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.25fr);
-  gap: clamp(28px, 4.5vw, 52px);
-  align-items: flex-start;
-  margin-top: 24px;
-}
-
-/* Kolom Visual (Frame Foto Tunggal yang Bersih & Mewah) */
-.menu__visual-col {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.menu__frame {
-  position: relative;
-  width: 100%;
-  max-width: 440px;
-  aspect-ratio: 4 / 3;
-  border-radius: 6px;
-  background: #fbf9f5;
-  border: 1px solid rgba(30, 22, 18, 0.14);
-  box-shadow:
-    inset 0 0 0 6px #ffffff,
-    0 18px 40px -8px rgba(30, 22, 18, 0.1);
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.menu__frame:hover {
-  transform: translateY(-2px);
-  box-shadow:
-    inset 0 0 0 6px #ffffff,
-    0 24px 48px -8px rgba(30, 22, 18, 0.15);
-}
-
-.menu__image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  animation: menu-fade 0.35s ease-out;
-}
-
-/* Badge Kelas di Sudut Frame */
-.menu__frame-badge {
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  padding: 5px 12px;
-  border-radius: 999px;
-  font-family: var(--font-body);
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  background: rgba(12, 10, 9, 0.85);
-  color: #f5ede0;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(229, 165, 59, 0.3);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-.menu__frame-badge--royal-gold {
-  background: linear-gradient(135deg, rgba(30, 22, 18, 0.95), rgba(184, 134, 11, 0.9));
-  border-color: rgba(255, 215, 0, 0.5);
-  color: #fff9e6;
-}
-
-/* ==========================================================================
-   Spesifikasi Kemasan (Mengisi Ruang Bawah Frame Gambar Secara Bermanfaat)
-   ========================================================================== */
-.menu__specs {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 8px;
-  width: 100%;
-  max-width: 440px;
-  margin-top: 14px;
-  padding: 10px 14px;
-  background: #faf8f5;
-  border: 1px solid var(--line);
-  border-radius: 6px;
-  animation: menu-fade 0.3s ease-out;
-}
-
-.menu__spec-item {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.menu__spec-label {
-  font-family: var(--font-body);
-  font-size: 0.64rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--terra);
-}
-
-.menu__spec-val {
-  font-family: var(--font-display);
-  font-size: 0.92rem;
-  font-weight: 600;
-  color: var(--ink);
-  line-height: 1.25;
-}
-
-/* ==========================================================================
-   Tombol Pemilih Kelas Menu (1 Baris Penuh dari Kiri ke Kanan, Bukan AI Slop)
-   ========================================================================== */
-.menu__details-wrap {
-  display: flex;
-  flex-direction: column;
-}
-
 .menu__tier-nav {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: clamp(10px, 1.8vw, 18px);
   width: 100%;
-  margin-top: 24px;
-  margin-bottom: 24px;
-  padding-bottom: 18px;
+  margin-top: clamp(28px, 3.5vw, 40px);
+  margin-bottom: clamp(28px, 3.5vw, 44px);
+  padding-bottom: 20px;
   border-bottom: 1px solid var(--line);
 }
 
@@ -188,12 +71,13 @@
   justify-content: center;
   gap: 8px;
   width: 100%;
-  padding: 11px 18px;
+  padding: 12px 18px;
   border-radius: 999px;
-  background: #ffffff;
+  background-color: #ffffff;
   border: 1px solid var(--line);
   cursor: pointer;
   white-space: nowrap;
+  font-family: var(--font-body);
   transition:
     background-color 0.25s ease,
     border-color 0.25s ease,
@@ -247,7 +131,7 @@
 }
 
 .menu__tier-btn.is-active {
-  background: #0c0a09;
+  background-color: #0c0a09;
   border-color: var(--gold);
   box-shadow: 0 4px 16px rgba(12, 10, 9, 0.16);
   transform: translateY(-2px);
@@ -270,22 +154,206 @@
 }
 
 /* ==========================================================================
-   Teks Cerita & Karakteristik (Tipografi Editorial Murni)
+   SHOWCASE 2-KOLOM SIMETRIS: KIRI & KANAN (TANPA FRAME KOTAK, TANPA GAP ANEH)
    ========================================================================== */
-.menu__content-body {
+.menu__spread {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(36px, 5vw, 64px);
+  align-items: stretch;
   animation: menu-fade 0.35s ease-out;
+}
+
+/* ==========================================================================
+   SISI KIRI: Visual Alami, Strip Spesifikasi, Meter Sensori
+   ========================================================================== */
+.menu__col-visual {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Foto Persegi / Rasio Asli 1:1 Tanpa Crop */
+.menu__photo-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 10px 28px -6px rgba(30, 22, 18, 0.12);
+}
+
+.menu__photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.menu__photo-tag {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 5px 14px;
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  background-color: rgba(12, 10, 9, 0.85);
+  color: #f5ede0;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(229, 165, 59, 0.4);
+}
+
+/* Strip Spesifikasi Meja (Garis Hairline Elegan, Bukan Kotak Card) */
+.menu__specs-strip {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr;
+  align-items: center;
+  gap: 12px;
+  padding-block: 12px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.menu__spec-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  text-align: center;
+}
+
+.menu__spec-divider {
+  width: 1px;
+  height: 28px;
+  background-color: var(--line);
+}
+
+.menu__spec-label {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--terra);
+}
+
+.menu__spec-val {
+  font-family: var(--font-display);
+  font-size: clamp(0.85rem, 1.05vw, 0.98rem);
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.25;
+}
+
+/* Karakteristik Sensori & Rasa (Melebur Bersih Tanpa Box Container) */
+.menu__sensory {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.menu__sensory-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu__sensory-title {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--terra);
+}
+
+.menu__sensory-badge {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.menu__sensory-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 22px;
+}
+
+.menu__sensory-item {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.menu__sensory-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu__sensory-name {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.menu__sensory-pct {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.menu__sensory-track {
+  width: 100%;
+  height: 5px;
+  background-color: #ede7dc;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.menu__sensory-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--terra), var(--gold));
+  border-radius: 999px;
+  transition: width 0.65s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+/* ==========================================================================
+   SISI KANAN: Identitas, Narasi, & 3 Pilar Budaya Ringkas
+   ========================================================================== */
+.menu__col-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.menu__info-header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .menu__meta {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   gap: 8px;
   flex-wrap: wrap;
-  margin-bottom: 8px;
 }
 
-.menu__category {
-  font-size: 0.72rem;
+.menu__badge {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
   font-weight: 600;
   letter-spacing: 0.22em;
   text-transform: uppercase;
@@ -297,86 +365,148 @@
   font-style: italic;
   font-size: 0.95rem;
   color: var(--ink-soft);
+  margin: 0;
 }
 
 .menu__dish-title {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 3.8vw, 2.8rem);
+  font-size: clamp(2rem, 3.4vw, 2.7rem);
   font-weight: 700;
   line-height: 1.15;
   color: var(--ink);
-  margin: 0;
+  margin: 4px 0 0;
 }
 
-.menu__dish-lead {
-  margin-top: 10px;
-  font-size: 0.95rem;
+.menu__lead {
+  margin: 8px 0 0;
+  font-family: var(--font-body);
+  font-size: 0.94rem;
   line-height: 1.65;
   color: var(--ink-soft);
 }
 
-/* Detail Karakteristik */
-.menu__traits {
+/* 3 Pilar Budaya: Ramping & Elegan (Bukan Frame Kotak) */
+.menu__culture-list {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  margin-top: 18px;
-  padding-top: 16px;
+  padding-top: 12px;
   border-top: 1px solid var(--line);
 }
 
-.menu__trait-item {
-  display: grid;
-  gap: 2px;
+.menu__culture-row {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed var(--line);
 }
 
-.menu__trait-label {
+.menu__culture-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.menu__culture-lead {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.menu__culture-num {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.menu__culture-cat {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0;
+}
+
+.menu__culture-text {
   font-family: var(--font-body);
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--terra);
-}
-
-.menu__trait-text {
-  font-size: 0.92rem;
-  line-height: 1.6;
+  font-size: 0.88rem;
+  line-height: 1.62;
   color: var(--ink-soft);
   margin: 0;
 }
 
-.menu__note {
-  margin-top: 18px;
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.14em;
+/* Catatan Kurasi di Sisi Bawah Kanan */
+.menu__footnote {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+
+.menu__footnote-icon {
+  font-size: 1.1rem;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+
+.menu__footnote-text {
+  font-family: var(--font-body);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--ink-soft);
-  opacity: 0.85;
 }
 
 @keyframes menu-fade {
   from {
     opacity: 0;
+    transform: translateY(4px);
   }
   to {
     opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================================================
+   Responsif
+   ========================================================================== */
+@media (max-width: 1160px) and (min-width: 901px) {
+  .menu__tier-btn {
+    padding: 11px 12px;
+    gap: 6px;
+  }
+  .menu__tier-level,
+  .menu__tier-dot {
+    display: none;
   }
 }
 
 @media (max-width: 900px) {
-  .menu__showcase {
+  .menu__spread {
     grid-template-columns: 1fr;
-    gap: 24px;
-  }
-
-  .menu__frame {
-    margin-inline: auto;
+    gap: 32px;
   }
 
   .menu__tier-nav {
     grid-template-columns: 1fr;
     gap: 8px;
+  }
+
+  .menu__sensory-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .menu__specs-strip {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .menu__spec-divider {
+    display: none;
   }
 }

@@ -109,6 +109,42 @@
   transform: scaleX(1);
 }
 
+.nav__passport-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background-color: rgba(196, 81, 47, 0.1);
+  border: 1px solid var(--terra);
+  color: var(--terra);
+  font-family: var(--font-body);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.nav.is-scrolled .nav__passport-btn,
+.nav.is-open .nav__passport-btn {
+  background-color: rgba(184, 134, 11, 0.2);
+  border-color: var(--gold);
+  color: #ffde7a;
+}
+
+.nav__passport-btn:hover {
+  background-color: var(--terra);
+  color: #ffffff;
+}
+
+.nav.is-scrolled .nav__passport-btn:hover,
+.nav.is-open .nav__passport-btn:hover {
+  background-color: var(--gold);
+  color: #0c0a09;
+}
+
 .nav__toggle {
   display: none;
   position: relative;
