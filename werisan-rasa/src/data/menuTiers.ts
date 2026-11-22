@@ -1,20 +1,30 @@
-import classicImg from "../assets/Classic.jpg";
-import signatureImg from "../assets/Signature.jpg";
-import royalGoldImg from "../assets/Royal Gold.jpg";
+import sumpiaImg from "../assets/Sumpia Udang.webp";
+import saguSusuImg from "../assets/Kue Sagu Susu.webp";
+import keciputImg from "../assets/Keciput Wijen.webp";
 
 export interface MenuTrait {
   label: string;
   text: string;
 }
 
+export interface CulturalPoint {
+  category: string;
+  text: string;
+}
+
 export interface MenuSpecs {
-  dimension: string;
-  material: string;
-  capacity: string;
+  origin: string;
+  texture: string;
+  tradition: string;
+}
+
+export interface FlavorGauge {
+  label: string;
+  percentage: number;
 }
 
 export interface MenuTier {
-  id: "classic" | "signature" | "royal-gold";
+  id: "sumpia-udang" | "kue-sagu-susu" | "keciput-wijen";
   name: string;
   badge: string;
   level: string;
@@ -25,104 +35,178 @@ export interface MenuTier {
   imageAlt: string;
   specs: MenuSpecs;
   traits: MenuTrait[];
+  culturalPoints: CulturalPoint[];
+  gauges: FlavorGauge[];
   note: string;
 }
 
 export const menuTiers: MenuTier[] = [
   {
-    id: "classic",
-    name: "Classic",
-    level: "Resep Asli Leluhur",
-    badge: "Koleksi Klasik",
-    tagline: "Kehangatan Tradisi yang Terus Terjaga",
-    dishTitle: "Hantaran Pusaka Klasik",
+    id: "sumpia-udang",
+    name: "Sumpia Udang",
+    level: "Gurih Renyah Ebi",
+    badge: "Pusaka Pesisir Cirebon",
+    tagline: "Harmoni Renyah Kulit Keemasan dengan Kelezatan Gurih Ebi Pesisir",
+    dishTitle: "Sumpia Udang Pesisir",
     dishLead:
-      "Kudapan klasik bertekstur selembut sutra yang dipanggang perlahan di atas bara arang. Menghadirkan perpaduan sari perasan daun pandan suji kebun, gurih kelapa tua murni, dan lelehan gula aren organik. Disajikan dalam kotak seni penuh warna yang merayakan ragam pusaka arsitektur Nusantara.",
-    image: classicImg,
-    imageAlt: "Kotak Hantaran Wérisan Rasa Edisi Klasik Penuh Warna",
+      "Kudapan klasik berukuran mungil seukuran satu gigitan (bite-sized) yang memadukan renyahnya gulungan kulit lumpia keemasan dengan isian abon ebi pilihan berpadu rempah aromatik. Mengabadikan tradisi kuliner maritim yang gurih dan melegenda.",
+    image: sumpiaImg,
+    imageAlt: "Sumpia Udang kering mini isi abon ebi gurih renyah keemasan",
     specs: {
-      dimension: "28 × 22 × 12 cm",
-      material: "Kayu Pinus & Pengait Tembaga",
-      capacity: "12 Kue Pusaka Segar",
+      origin: "Cirebon & Pesisir Jawa",
+      texture: "Renyah Garing Bite-Sized",
+      tradition: "Peranakan & Jamuan Lebaran",
     },
-    traits: [
+    gauges: [
+      { label: "Kerenyahan Kulit", percentage: 96 },
+      { label: "Gurih Umami Ebi", percentage: 94 },
+      { label: "Aroma Rempah Laut", percentage: 88 },
+      { label: "Manis Samar Aren", percentage: 42 },
+    ],
+    culturalPoints: [
       {
-        label: "Bahan Utama",
-        text: "Tepung beras pulen pilihan, daun pandan suji kebun, santan kelapa murni, dan gula aren organik.",
+        category: "Asal Muasal & Akulturasi",
+        text: "Lahir dari keharmonisan budaya Tionghoa peranakan dengan masyarakat pesisir Cirebon dan Semarang. Berakar dari kata Hokkien serumpun 'lumpia' (lun-pia) yang diinovasi menjadi versi kering mini tanpa bahan pengawet agar tahan lama sebagai bekal pelayaran saudagar Nusantara.",
       },
       {
-        label: "Karakter Rasa",
-        text: "Manis legit alami dengan gurih santan yang seimbang, aroma pandan semerbak, dan tekstur lumer di lidah.",
+        category: "Bahan-Bahan Alami",
+        text: "Lembaran tipis kulit gandum garing, abon udang ebi laut super yang ditumbuk halus bersama bawang Brebes, ketumbar sangrai, daun jeruk wangi, dan garam laut alami yang digoreng pada suhu presisi.",
       },
       {
-        label: "Kemasan & Seni",
-        text: "Kotak hantaran bermotif lukisan cat air penuh warna Nusantara dengan kunci tembaga orisinil.",
+        category: "Filosofi & Tradisi Jamuan",
+        text: "Udang menyimbolkan tawa dan sukacita ('ha'), sementara bentuk gulungan rapatnya melambangkan simpanan rezeki emas. Kudapan kehormatan yang selalu hadir di toples ruang tamu saat Imlek maupun Idul Fitri.",
       },
     ],
-    note: "Dibuat Segar Setiap Hari · Resep Asli Turun-Temurun · Tanpa Bahan Pengawet",
+    traits: [
+      {
+        label: "Asal Muasal & Sejarah",
+        text: "Lahir dari akulturasi harmonis kebudayaan Tionghoa peranakan di pelabuhan tua pesisir utara Jawa.",
+      },
+      {
+        label: "Cita Rasa & Tekstur",
+        text: "Sensasi kriuk renyah gurih disusul kelezatan abon ebi dengan karakter umami yang panjang.",
+      },
+      {
+        label: "Bahan-Bahan Alami",
+        text: "Kulit gandum tipis istimewa, abon ebi laut kualitas super, rempah Brebes, dan daun jeruk wangi.",
+      },
+      {
+        label: "Wawasan Budaya & Filosofi",
+        text: "Simbol kemakmuran, tawa sukacita, dan ikatan silaturahmi perayaan hari besar keluarga.",
+      },
+    ],
+    note: "Kudapan Pusaka Pesisir · Udang Ebi Pilihan Tanpa Pengawet · Dibuat Segar & Renyah Alami",
   },
   {
-    id: "signature",
-    name: "Signature",
-    level: "Seleksi Bahan Kurasi",
-    badge: "Koleksi Istimewa",
-    tagline: "Eksplorasi Rasa dengan Sentuhan Elegan",
-    dishTitle: "Hantaran Pusaka Signature",
+    id: "kue-sagu-susu",
+    name: "Kue Sagu Susu",
+    level: "Lumer Manis Susu",
+    badge: "Warisan Pati Sagu Nusantara",
+    tagline: "Sensasi Lumer di Lidah dari Kebaikan Pati Sagu Purba Berpadu Harum Manis Susu",
+    dishTitle: "Kue Sagu Susu Pandan",
     dishLead:
-      "Persembahan istimewa dari dapur Wérisan Rasa dengan seleksi rempah dan bahan kurasi terbaik dari perkebunan pegunungan. Dipanggang dengan teknik penguncian aroma kayu aromatik, dibalut dalam kemasan gaya etsa monokrom vintage beraksen ornamen sudut kuningan dan peta kepulauan berlapis emas.",
-    image: signatureImg,
-    imageAlt: "Kotak Hantaran Wérisan Rasa Edisi Signature Monokrom dengan Ornamen Sudut Emas",
+      "Kue kering pusaka berbentuk kuncup bunga semprit klasik yang menghadirkan keajaiban sensasi tekstur: kokoh saat disentuh, namun seketika lumer selembut sutra saat bersentuhan dengan lidah, berpadu manis harum daun pandan sangrai.",
+    image: saguSusuImg,
+    imageAlt: "Kue Sagu Susu semprit bunga tradisional bertekstur lumer lembut",
     specs: {
-      dimension: "28 × 22 × 12 cm",
-      material: "Kayu Pinus, Sudut Kuningan & Peta Emas",
-      capacity: "12 Kue Pusaka Kurasi",
+      origin: "Tradisi Melayu & Betawi-Jawa",
+      texture: "Melt-in-the-Mouth (Lumer)",
+      tradition: "Sajian Silaturahmi Hari Raya",
     },
-    traits: [
+    gauges: [
+      { label: "Kelembutan Lumer", percentage: 98 },
+      { label: "Manis Susu Gurih", percentage: 90 },
+      { label: "Harum Pandan Alami", percentage: 92 },
+      { label: "Kerenyahan Luar", percentage: 72 },
+    ],
+    culturalPoints: [
       {
-        label: "Bahan Utama",
-        text: "Gula aren organik pegunungan, sari kelapa tua perasan pertama, perasan suji pekat ganda, dan aroma kayu manis pilihan.",
+        category: "Asal Muasal & Sejarah",
+        text: "Memadukan tanaman pangan purba endemik sagu Nusantara dengan seni pembuatan biskuit semprit era kolonial (Indisch pastry) abad ke-19, menghasilkan kudapan manis bertekstur lekas lumer yang dicintai lintas generasi.",
       },
       {
-        label: "Karakter Rasa",
-        text: "Lapisan rasa lebih kaya dan berdimensi, aroma panggangan khas yang harum memikat, serta kelembutan paripurna.",
+        category: "Bahan-Bahan Alami",
+        text: "Tepung pati sagu aren murni yang disangrai perlahan bersama irisan daun pandan segar hingga berbobot ringan, dipadu susu murni, mentega bermutu tinggi, kuning telur ayam segar, dan vanila alami.",
       },
       {
-        label: "Kemasan & Seni",
-        text: "Kotak kayu eksklusif gaya etsa monokrom dengan pelindung sudut tembaga antik dan aksen peta Nusantara emas.",
+        category: "Filosofi & Tradisi Jamuan",
+        text: "Tekstur lekas lumer di lidah menyimbolkan keikhlasan hati dan kelapangan dada untuk saling memaafkan pada hari raya, sekaligus lambang ketulusan serta kelembutan budi pekerti tuan rumah.",
       },
     ],
-    note: "Pilihan Kurasi Khusus · Dipanggang Terbatas Setiap Pagi · Sangat Ideal untuk Hantaran Rekan Istimewa",
+    traits: [
+      {
+        label: "Asal Muasal & Sejarah",
+        text: "Perpaduan kearifan pati sagu Nusantara dengan teknik biskuit semprit era kolonial abad ke-19.",
+      },
+      {
+        label: "Cita Rasa & Tekstur",
+        text: "Manis gurih lembut dengan sensasi melt-in-the-mouth yang langsung lumer di mulut.",
+      },
+      {
+        label: "Bahan-Bahan Alami",
+        text: "Pati sagu aren murni, daun pandan segar sangrai, susu murni, mentega, dan vanila alami.",
+      },
+      {
+        label: "Wawasan Budaya & Filosofi",
+        text: "Simbol keikhlasan hati dan kelapangan dada untuk saling memaafkan dalam jamuan hari raya.",
+      },
+    ],
+    note: "Kudapan Warisan Nusantara · Menggunakan Pati Sagu Alami & Pandan Segar · Resep Tradisi Turun-Temurun",
   },
   {
-    id: "royal-gold",
-    name: "Royal Gold",
-    level: "Mahakarya Premium",
-    badge: "Edisi Mahakarya",
-    tagline: "Puncak Kemewahan Cita Rasa Tradisi",
-    dishTitle: "Hantaran Pusaka Royal Gold",
+    id: "keciput-wijen",
+    name: "Keciput Wijen",
+    level: "Kriuk Gurih Wijen",
+    badge: "Pusaka Pesisir Jawa Tengah",
+    tagline: "Kriuk Gurih Bertabur Butiran Wijen Lambang Keakraban dan Rezeki Berlimpah",
+    dishTitle: "Keciput Wijen Pusaka",
     dishLead:
-      "Puncak keagungan cita rasa kuliner Nusantara. Dibuat hanya dari bahan-bahan paling murni dan langka dengan proses pembuatan cermat tanpa kompromi. Dihadirkan dalam kotak hantaran mahakarya bertatahkan logo emas 24 karat timbul dan sudut tembaga orisinil bernilai koleksi tinggi.",
-    image: royalGoldImg,
-    imageAlt: "Kotak Hantaran Wérisan Rasa Edisi Royal Gold Berlapis Stempel Emas 24K",
+      "Kudapan pusaka berbentuk bulatan mini bertabur rapat biji wijen keemasan. Bertekstur padat garing dan tidak kempis, menghadirkan letupan gurih wijen sangrai berpadu gurih santan kelapa yang tak lekang oleh zaman.",
+    image: keciputImg,
+    imageAlt: "Kue Keciput Wijen renyah garing bertabur biji wijen utuh",
     specs: {
-      dimension: "28 × 22 × 12 cm",
-      material: "Kayu Pilihan, Foil Emas 24K & Kuningan",
-      capacity: "12 Kue Pusaka Mahakarya",
+      origin: "Kudus & Pesisir Jawa",
+      texture: "Kriuk Renyah Padat Garing",
+      tradition: "Hajatan Pernikahan & Lebaran",
     },
-    traits: [
+    gauges: [
+      { label: "Kriuk Renyah Padat", percentage: 95 },
+      { label: "Gurih Wijen Panggang", percentage: 96 },
+      { label: "Gurih Santan Kelapa", percentage: 86 },
+      { label: "Manis Legit Seimbang", percentage: 65 },
+    ],
+    culturalPoints: [
       {
-        label: "Bahan Utama",
-        text: "Pandan suji umur optimal, gula aren kristal organik khusus, santan kental ganda murni, serta sentuhan daun emas konsumsi murni.",
+        category: "Asal Muasal & Sejarah",
+        text: "Kearifan pesisir utara Jawa Tengah (Kudus & Jepara). Adaptasi cerdas dari onde-onde Majapahit yang dibuat mini tanpa isian basah agar tahan lama berminggu-minggu sebagai bekal perjalanan maritim dan upacara adat.",
       },
       {
-        label: "Karakter Rasa",
-        text: "Kemewahan rasa paripurna—gurih lembut berpadu karamel aren elegan, meninggalkan aroma semerbak yang panjang di langit-langit mulut.",
+        category: "Bahan-Bahan Alami",
+        text: "Tepung ketan putih pilihan, santan kelapa tua kental segar, telur ayam, gula tebu, sedikit garam laut untuk mengangkat aroma gurih, serta limpahan biji wijen putih berkualitas super tanpa pemutih.",
       },
       {
-        label: "Kemasan & Seni",
-        text: "Kotak hantaran edisi terbatas bertatahkan stempel foil emas 24K timbul dengan ornamen kuningan seni tinggi.",
+        category: "Filosofi & Tradisi Jamuan",
+        text: "Butiran wijen yang melekat erat melambangkan falsafah 'guyub rukun' (kebersamaan yang tak terpisahkan) serta rezeki melimpah. Menjadi sajian kehormatan hantaran pernikahan adat dan hari raya.",
       },
     ],
-    note: "Edisi Mahakarya Eksklusif · Dibuat Berdasarkan Pesanan Khusus (Made to Order) · Sertifikat Otentisitas",
+    traits: [
+      {
+        label: "Asal Muasal & Sejarah",
+        text: "Adaptasi onde-onde era Majapahit menjadi kudapan mini kering khas Kudus dan pesisir Jawa.",
+      },
+      {
+        label: "Cita Rasa & Tekstur",
+        text: "Padat garing dengan aroma nutty wijen sangrai berpadu santan gurih dan manis seimbang.",
+      },
+      {
+        label: "Bahan-Bahan Alami",
+        text: "Tepung ketan putih, santan kelapa kental, gula tebu murni, dan limpahan biji wijen pilihan.",
+      },
+      {
+        label: "Wawasan Budaya & Filosofi",
+        text: "Lambang keharmonisan guyub rukun, kesuburan, dan rezeki tak terputus.",
+      },
+    ],
+    note: "Kudapan Tradisi Jawa Pesisir · Wijen Alami Pilihan Berkualitas · Renyah Alami Tahan Lama",
   },
 ];

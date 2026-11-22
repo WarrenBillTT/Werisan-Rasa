@@ -1,3 +1,7 @@
+@import "../components/Menu.css";
+@import "../components/TastePassport.css";
+@import "../components/TasteQuiz.css";
+
 :root {
   --paper: #ffffff;
   --paper-light: #faf8f5;
@@ -131,7 +135,7 @@ section {
   background-color: #0c0a09;
   border-top: 1px solid rgba(229, 165, 59, 0.3);
   border-bottom: 1px solid rgba(229, 165, 59, 0.18);
-  padding-block: 18px;
+  padding-block: clamp(24px, 2.5vw, 36px);
   box-shadow:
     0 10px 30px rgba(0, 0, 0, 0.25),
     0 -4px 20px rgba(0, 0, 0, 0.15);
